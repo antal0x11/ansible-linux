@@ -1,0 +1,63 @@
+---
+- name: Configuration with core utils for debian based linux hosts
+  hosts: servers
+  remote_user: # Add remote username
+  become: yes
+  vars:
+    username: # Add remote username
+
+  tasks:
+    - name: Update hosts apt packages
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to latest version
+      apt:
+        upgrade: dist
+
+    - name: Install core utils
+      ansible.builtin.apt:
+        pkg:
+          - strace
+          - ltrace
+          - gdb
+          - iproute2
+          - tmux
+          - vim
+          - sipcalc
+          - gcc
+          - lsof
+          - iotop
+          - git
+        update_cache: yes
+        state: present
+
+    - name: Remove dependencies that are no longer required and purge their configuration files
+      ansible.builtin.apt:
+        autoremove: yes
+        purge: true
+
+    - name: "Copy .bashrc, .tmux.conf, .vimrc to {{ username }}"
+      ansible.builtin.copy:
+        src:  "{{ item }}"
+        dest: "/home/{{ username }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: "0644"
+      loop:
+        - ../config/.bashrc
+        - ../config/.tmux.conf
+        - ../config/.vimrc
+
+    - name: Copy .bashrc, .tmux.conf, .vimrc to root
+      ansible.builtin.copy:
+        src:  "{{ item }}"
+        dest: /root
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - ../config/.bashrc
+        - ../config/.tmux.conf
+        - ../config/.vimrc
+    
