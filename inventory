@@ -1,0 +1,4 @@
+# Add the servers for your playbooks
+
+[servers]
+server.foo
