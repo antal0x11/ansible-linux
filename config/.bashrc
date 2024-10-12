@@ -22,6 +22,6 @@ BWHITE='\[\033[1;37m\]'
 
 RESET='\[\033[0m\]'
 
-PS1="${debian_chroot:+($debian_chroot)}[${BYELLOW}$(date +%d/%m/%Y) \t${RESET} ${BLUE}=>${RESET} ${RED}$(hostname -f)${RESET}] ${BBLUE}-${RESET} [ ${GREEN}\w${RESET} ] \n[${BYELLOW}\u${RESET}] ${RED}::${RESET}${BLUE}\$(git_branch)${RESET} ${BYELLOW}> ${RESET}"
+PS1="${debian_chroot:+($debian_chroot)}[${BYELLOW}\u${RESET} ${BLUE}=>${RESET} ${RED}$(hostname -f)${RESET}] ${BBLUE}-${RESET} [ ${GREEN}\w${RESET} ] \n[${BYELLOW}#${RESET}] ${RED}::${RESET}${BLUE}\$(git_branch)${RESET} ${BYELLOW}> ${RESET}"
 
 alias ls='ls -G'
