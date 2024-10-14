@@ -29,6 +29,7 @@
           - lsof
           - iotop
           - git
+          - sysstat
         update_cache: yes
         state: present
 
