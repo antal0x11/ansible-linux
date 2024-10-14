@@ -9,8 +9,8 @@ iostat -c
 
 | Metric | Description | Good Performance | Bad Performance |
 |--------|-------------|------------------|-----------------|
-|`%user`|Time spent on user processes|**< 50%** (Balanced Workload)|**> 70% **(CPU-bound, may need optimization)|
-|`%system`|Time spent on kernel tasks|**< 30%**|**> 50% **(Too many system calls or I/O operations)|
+|`%user`|Time spent on user processes|**< 50%** (Balanced Workload)|**> 70%** (CPU-bound, may need optimization)|
+|`%system`|Time spent on kernel tasks|**< 30%**|**> 50%** (Too many system calls or I/O operations)|
 |`%iowait`|Time spent waiting for I/O|**< 5%**|**> 10%** (I/O bottleneck, storage too slow)|
 |`%idle`|CPU time doing nothing|**> 70%**|**< 20%** (CPU overloaded)|
 
