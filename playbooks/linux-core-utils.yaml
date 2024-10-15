@@ -1,10 +1,10 @@
 ---
 - name: Configuration with core utils for debian based linux hosts
   hosts: servers
-  remote_user: # Add remote username
+  remote_user: ubuntu # Add remote username
   become: yes
   vars:
-    username: # Add remote username
+    username: ubuntu # Add remote username
 
   tasks:
     - name: Update hosts apt packages
@@ -30,6 +30,7 @@
           - iotop
           - git
           - sysstat
+          - silversearcher-ag
         update_cache: yes
         state: present
 
